@@ -1,1 +1,26 @@
-<p>certificates works!</p>
+<section class="certificates-container">
+  <h2>Achievements & Certificates</h2>
+
+  <div *ngIf="certificates.length > 0; else noCertificates">
+    <ul class="certificates-list">
+      <li *ngFor="let certificate of certificates" class="certificate-item">
+
+        <h3 class="certificate-title">
+          <span class="certificate-name">{{ certificate.name }}</span>
+          <span *ngIf="certificate.date" class="certificate-date">
+             ({{ certificate.date | date:'yyyy' }}) </span>
+        </h3>
+
+        <p *ngIf="certificate.description" class="certificate-description">
+          {{ certificate.description }}
+        </p>
+
+        </li>
+    </ul>
+  </div>
+
+  <ng-template #noCertificates>
+    <p class="no-certificates">No achievements or certificates available.</p>
+  </ng-template>
+
+</section>
