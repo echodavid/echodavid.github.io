@@ -27,7 +27,7 @@ jobs:
 
     - name: Build Angular App
       run: |
-        npm run build --output-path=docs
+        npm run build -- --configuration=production
 
     - name: Docker Login
       env:
@@ -40,8 +40,7 @@ jobs:
       run: docker run -d --name http_base httpd:alpine
 
     - name: Copy Build Files to Container
-      run: docker cp docs/. http_base:/usr/local/apache2/htdocs
-
+      run: docker cp dist/mycv/. http_base:/usr/local/apache2/htdocs
     - name: Commit Custom Docker Image
       run: docker commit http_base ${{ secrets.DOCKER_USER }}/mycv:${{ github.sha }}
 
