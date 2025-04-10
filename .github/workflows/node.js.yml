@@ -20,7 +20,7 @@ jobs:
 
     - name: Install Dependenciess
       run: npm ci
-
+    
     # - name: Run Tests
     #   run: |
     #     npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
@@ -40,7 +40,8 @@ jobs:
       run: docker run -d --name http_base httpd:alpine
 
     - name: Copy Build Files to Container
-      run: docker cp dist/mycv/browser. http_base:/usr/local/apache2/htdocs
+      run:  ls -a
+            docker cp dist/mycv/browser/. http_base:/usr/local/apache2/htdocs
     - name: Commit Custom Docker Image
       run: docker commit http_base ${{ secrets.DOCKER_USER }}/mycv:${{ github.sha }}
 
