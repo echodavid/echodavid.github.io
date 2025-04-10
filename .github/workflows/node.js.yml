@@ -1,4 +1,5 @@
-name: Angular_DockerImage
+# .github/workflows/Angular_DockerImage.yml
+name: Angular_DockerImage Build and Push
 
 on:
   push:
@@ -7,48 +8,45 @@ on:
     branches: [ main ]
 
 jobs:
-
-  angular_deploy :
+  build_and_push_docker_image:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 16.x
-      uses: actions/setup-node@v1
-      with:
-          node-version: 20.x
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    - name: npm install
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20.x # O la versión que necesites
+
+    - name: Install dependencies
       run: npm ci
 
-    # - name: test
-    #   run: |
-    #     npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-    - name: build
-      run: |
-        npm run build 
-        
-    - name: docker login
-      env:
-        DOCKER_USER: ${{secrets.DOCKER_USER}}
-        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-      run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
-        
-    - name: Download and run the Docker base image
-      run: docker run -d --name http_base httpd
-    
-    - name: List source directory content # Paso añadido
-      run: ls -lah dist/mycv/browser/
+    - name: Build Angular application # Genera dist/mycv/browser
+      run: npm run build
 
-    - name: copy model to the Docker image
-      run: docker cp dist/mycv/browser/. http_base:/usr/local/apache2/htdocs
-      
-    - name: List destination directory content inside container # Nombre corregido para mayor claridad
-      run: docker exec http_base ls -lah /usr/local/apache2/htdocs
-      
-    - name: Build the custom Docker image
-      run: docker commit --change "ENV MODEL_NAME http_base" http_base ${{secrets.DOCKER_USER}}/mycv:${{ github.sha }}
-  
-    - name: Docker Push
-      run: docker push ${{secrets.DOCKER_USER}}/mycv:${{ github.sha }}
+    # --- Pasos para construir y subir la imagen Docker ---
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      # Este paso ejecuta 'docker build' usando el Dockerfile.
+      # La instrucción COPY dentro del Dockerfile se ejecuta aquí.
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile # Especifica tu Dockerfile
+        push: true
+        tags: |
+          ${{ secrets.DOCKER_USER }}/mycv:${{ github.sha }}
+          ${{ secrets.DOCKER_USER }}/mycv:latest
+
+    # --- Ya no necesitas los pasos manuales de docker run, cp, commit, push ---
