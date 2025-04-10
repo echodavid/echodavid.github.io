@@ -41,6 +41,9 @@ jobs:
     - name: List source directory content # Paso añadido
       run: ls -lah dist/mycv/browser/
 
+    - name: List destination directory content inside container # Nombre corregido para mayor claridad
+      run: docker exec http_base ls -lah /usr/local/apache2/htdocs
+
     - name: copy model to the Docker image
       run: docker cp dist/mycv/browser/. http_base:/usr/local/apache2/htdocs
       
