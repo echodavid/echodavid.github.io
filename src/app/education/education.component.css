@@ -1,0 +1,63 @@
+.education-container {
+  max-width: 750px;
+  margin: 20px auto;
+}
+
+.education-container h2 {
+  padding-left: 35px;
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+}
+
+.education-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.education-item {
+  padding-left: 35px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.education-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 45px;
+  width: 30px;
+  background-color: #085687;
+  border-radius: 1px;
+}
+
+.education-dates {
+  font-size: 0.9em;
+  color: #085687;
+  font-weight: 500;
+  margin: 0 0 3px 0;
+}
+
+.education-degree {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 0 0 4px 0;
+}
+
+.education-institution {
+  font-size: 1em;
+  margin: 0;
+}
+
+.no-education {
+  font-size: 1em;
+  padding: 25px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  margin-top: 20px;
+}
