@@ -1,43 +1,50 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+# .github/workflows/deploy-prebuilt-to-pages.yml
+name: Deploy Pre-Built Content to GitHub Pages from Release Branch
 
 on:
-  # Runs on pushes targeting the default branch
+  # Ejecutar solo en pushes a la rama 'release'
   push:
-    branches: ["release"]
+    branches: [ "release" ]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Permite ejecutar este workflow manually desde la pestaña Actions en GitHub
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Permisos necesarios para desplegar en GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Permitir solo un despliegue concurrente
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: false # No cancelar despliegues en progreso
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
-      url: https://github.com/echodavid/echodavid.github.io/blob/release/docs/browser/index.html
+      url: ${{ steps.deployment.outputs.page_url }} # URL dinámica del sitio desplegado
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout 'release' branch
+        # Hace checkout de la rama 'release' que contiene los archivos pre-construidos
         uses: actions/checkout@v4
-      - name: Setup Pages
+        with:
+          ref: release # Asegura que toma la rama correcta
+
+      - name: Setup GitHub Pages
+        # Configura el entorno para la API de Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+
+      - name: Upload artifact from ./docs/browser
+        # Sube el contenido de la carpeta './docs/browser' como el artefacto para Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Ruta confirmada donde están los archivos de build en la rama 'release'
+          path: './docs/browser'
+
       - name: Deploy to GitHub Pages
         id: deployment
+        # Despliega el artefacto subido en el paso anterior
         uses: actions/deploy-pages@v4
