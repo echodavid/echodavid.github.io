@@ -1,0 +1,42 @@
+<section class="work-experience-section">
+  <h2>Work Experience</h2>
+
+  <div *ngIf="WorkExperiences.length > 0; else noExperience">
+    <ul class="experience-list">
+      <li *ngFor="let workExperience of WorkExperiences" class="experience-item">
+
+        <div class="item-header">
+          <span class="dates">
+            {{ workExperience.startDate | date:'MM/yyyy' }} -
+            <ng-container *ngIf="workExperience.endDate === 'Present'; else displayEndDate">
+              Present
+            </ng-container>
+            <ng-template #displayEndDate>
+              {{ workExperience.endDate | date:'MM/yyyy' }}
+            </ng-template>
+          </span>
+          <span class="location">{{ workExperience.location }}</span>
+        </div>
+
+        <h3 class="position">{{ workExperience.position }}</h3>
+
+        <p class="company">{{ workExperience.company }}</p>
+
+        <div class="accomplishments-section">
+          <h4 class="accomplishments-label">Accomplishments</h4>
+          <div class="accomplishments-text">
+            <p>{{ workExperience.accomplishments }}</p>
+          </div>
+        </div>
+
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noExperience>
+     <div class="no-experience-fallback"> <h2>Work Experience</h2>
+        <p class="no-experience-message">No work experience available.</p>
+     </div>
+  </ng-template>
+
+</section>

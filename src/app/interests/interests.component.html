@@ -1,0 +1,15 @@
+<section class="interests-container">
+  <h2>Interests</h2>
+
+  <div *ngIf="interests.length > 0; else noInterestsAvailable" class="interests-list">
+      <span *ngFor="let interest of interests; let isLast = last" class="interest-item-wrapper">
+        <span class="interest-item">{{ interest.interest }}</span>
+        <span *ngIf="!isLast" class="separator"> | </span>
+      </span>
+  </div>
+
+  <ng-template #noInterestsAvailable>
+    <p class="no-interests">No interests available.</p>
+  </ng-template>
+
+</section>
