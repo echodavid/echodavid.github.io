@@ -1,0 +1,51 @@
+.certificates-container {
+  max-width: 750px;
+  margin: 20px auto;
+  margin-left: 20px;
+}
+
+.certificates-container h2 {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 25px;
+  padding-bottom: 5px;
+}
+
+.certificates-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.certificate-item {
+  margin-bottom: 20px;
+}
+
+.certificate-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+
+.certificate-date {
+  font-weight: normal;
+  font-size: 0.95em;
+  margin-left: 5px;
+  white-space: nowrap;
+}
+
+.certificate-description {
+  font-size: 0.95em;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.no-certificates {
+  font-size: 1em;
+  padding: 25px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  margin-top: 20px;
+}

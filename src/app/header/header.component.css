@@ -1,0 +1,100 @@
+.header-container {
+  vertical-align: middle;
+  border-bottom: 2px solid #085687;
+}
+
+td {
+  padding: 25px 15px;
+  vertical-align: top;
+  border: none;
+}
+
+td.col-name-goal {
+  width: 40%;
+  padding-left: 35px;
+  position: relative;
+}
+
+td.col-name-goal::before {
+  content: '';
+    position: absolute;
+    left: 0;
+    top: 25px;
+    height: 30%;
+    width: 30px;
+    background-color: #085687;
+    border-radius: 1px;
+  }
+
+.header-name {
+  font-size: 2.4em;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  line-height: 1.1;
+}
+
+.header-goal {
+  font-size: 1em;
+  color: #7f8c8d;
+  margin: 0;
+  line-height: 1.5;
+}
+
+td.col-photo {
+  width: 180px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.header-photo {
+  display: inline-block;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  width: 150px;
+  height: 150px;
+}
+
+td.header-contact {
+  width: 35%;
+  text-align: right;
+  padding-right: 25px;
+  font-size: 0.95em;
+  vertical-align: middle;
+}
+
+.header-contact p {
+  margin: 0 0 12px 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header-contact p:last-child {
+  margin-bottom: 0;
+}
+
+.header-contact p .contact-text {
+  order: 0;
+}
+
+.header-contact p i {
+  order: 1;
+  color: #085687;
+  margin-left: 10px;
+  font-size: 1.2em;
+  width: 1.3em;
+  text-align: center;
+}
+
+.header-contact p a {
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.header-contact p a:hover {
+  color: #085687;
+  text-decoration: none;
+}
