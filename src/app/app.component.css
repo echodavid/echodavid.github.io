@@ -1,0 +1,76 @@
+/* --- Estilos Globales (Opcional) --- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.cv-table-layout {
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.07);
+  border-collapse: collapse;
+}
+
+.cv-table-layout td {
+  border: none;
+  vertical-align: top;
+}
+
+.cv-table-header {
+  padding: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cv-table-col-left {
+  width: 50%;
+}
+
+.cv-table-col-right {
+  width: 50%;
+}
+
+.cv-table-layout app-work-experience,
+.cv-table-layout app-education,
+.cv-table-layout app-skills,
+.cv-table-layout app-certificates,
+.cv-table-layout app-languages,
+.cv-table-layout app-interests {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.cv-table-layout td>*:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .cv-table-layout,
+  .cv-table-layout tbody,
+  .cv-table-layout tr,
+  .cv-table-layout td {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .cv-table-layout td {
+    margin-bottom: 20px;
+  }
+
+  .cv-table-layout tr:last-child td:last-child {
+    margin-bottom: 0;
+  }
+
+  .cv-table-layout {
+    margin: 15px;
+  }
+
+  .cv-table-header {
+    border-bottom: none;
+  }
+}

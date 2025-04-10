@@ -1,1 +1,30 @@
-<p>education works!</p>
+<section class="education-container">
+  <h2>Education</h2>
+
+  <div *ngIf="educations.length > 0; else noEducationRecords">
+    <ul class="education-list">
+      <li *ngFor="let education of educations" class="education-item">
+
+        <p class="education-dates">
+          {{ education.startDate | date:'MM/yyyy' }} -
+          <ng-container *ngIf="education.endDate === 'Present'; else displayEndDate">
+            Present
+          </ng-container>
+          <ng-template #displayEndDate>
+            {{ education.endDate | date:'MM/yyyy' }}
+          </ng-template>
+        </p>
+
+        <h3 class="education-degree">{{ education.degree }}</h3>
+
+        <p class="education-institution">{{ education.institution }}</p>
+
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noEducationRecords>
+    <p class="no-education">No education records available.</p>
+  </ng-template>
+
+</section>

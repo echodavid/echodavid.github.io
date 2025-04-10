@@ -1,1 +1,14 @@
-<p>languages works!</p>
+<section class="languages-container">
+  <h2>Languages</h2>
+
+  <div *ngIf="Languages.length > 0; else noLanguagesAvailable" class="languages-list">
+      <span *ngFor="let lang of Languages" class="language-item">
+        {{ lang.language }}
+      </span>
+  </div>
+
+  <ng-template #noLanguagesAvailable>
+    <p class="no-languages">No languages available.</p>
+  </ng-template>
+
+</section>

@@ -1,32 +1,21 @@
-<table border="1">
+<table class="cv-table-layout">
   <tr>
-    <td colspan="2">
+    <td colspan="2" class="cv-table-header">
       <app-header></app-header>
     </td>
   </tr>
   <tr>
-    <td>
+    <td class="cv-table-col-left">
       <app-work-experience></app-work-experience>
-    </td>
-    <td>
-      <app-skills></app-skills>
-    </td>
-  </tr>
-  <tr>
-    <td>
       <app-education></app-education>
-    </td>
-    <td>
-      <app-certificates></app-certificates>
-    </td>
-  </tr>
-  <tr>
-    <td>
       <app-languages></app-languages>
     </td>
-    <td>
+    <td class="cv-table-col-right">
+      <app-skills></app-skills>
+      <app-certificates></app-certificates>
       <app-interests></app-interests>
     </td>
   </tr>
 </table>
-<router-outlet />
+
+<router-outlet></router-outlet>

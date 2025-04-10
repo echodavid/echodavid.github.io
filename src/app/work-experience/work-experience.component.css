@@ -1,0 +1,107 @@
+.work-experience-section {
+  max-width: 750px;
+  margin: 20px auto;
+}
+
+.work-experience-section h2 {
+  font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+    padding-left: 35px;
+  }
+
+.experience-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-item {
+  padding-left: 25px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.experience-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 50px;
+  width: 10px;
+  background-color: #085687;
+  border-radius: 1px;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+}
+
+.dates {
+  color: #085687;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.location {
+  color: #085687;
+  font-weight: 500;
+  white-space: nowrap;
+  padding-left: 10px;
+}
+
+.position {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 2px;
+}
+
+.company {
+  font-size: 1.1em;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.accomplishments-section {
+  margin-top: 10px;
+}
+
+.accomplishments-label {
+  font-size: 0.9em;
+  color: #085687;
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.accomplishments-text {
+  font-size: 0.95em;
+}
+
+.accomplishments-text p {
+  margin: 0;
+}
+
+.no-experience-fallback h2 {
+  font-size: 1.6em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.no-experience-message {
+  font-size: 1em;
+  padding: 25px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  margin-top: 20px;
+}
