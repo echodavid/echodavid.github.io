@@ -40,7 +40,7 @@ jobs:
       run: docker run -d --name http_base httpd:alpine
 
     - name: Copy Build Files to Container
-      run:  ls -a
+      run:  ls -a |
             docker cp dist/mycv/browser/. http_base:/usr/local/apache2/htdocs
     - name: Commit Custom Docker Image
       run: docker commit http_base ${{ secrets.DOCKER_USER }}/mycv:${{ github.sha }}
